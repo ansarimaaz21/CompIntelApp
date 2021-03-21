@@ -5,17 +5,16 @@ const express = require("express"),
 
 const productsRouter = require("./routes/products");
 
-var server = {
-  port: 8000,
-};
-
 // use the modules
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use("", productsRouter);
 
-// starting the server
-app.listen(server.port, () =>
-  console.log(`Server started, listening port: ${server.port}`)
-);
+app.listen(process.env.PORT || 8000, function () {
+  console.log(
+    "Express server listening on port %d in %s mode",
+    this.address().port,
+    app.settings.env
+  );
+});
