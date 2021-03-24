@@ -18,12 +18,12 @@ router.get("/get_products", function (req, res) {
   let sql = `
     SELECT 
         IFNULL(dt, '') date,
-        comp,
-        title,
-        mrp,
-        price,
-        availablity,
-        url
+        IFNULL(comp,'') comp,
+        IFNULL(title,'') title,
+        IFNULL(mrp,'') mrp,
+        IFNULL(price,'') price,
+        IFNULL(availablity,'') availablity,
+        IFNULL(url,'#') url
     FROM
         maaz.prod_prices
     WHERE
