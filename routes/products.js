@@ -18,6 +18,7 @@ router.get("/get_products", function (req, res) {
   let sql = `
     SELECT 
         IFNULL(dt, '') date,
+        IFNULL(id,'') id
         IFNULL(comp,'') comp,
         IFNULL(title,'') title,
         IFNULL(mrp,'') mrp,
