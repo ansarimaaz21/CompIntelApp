@@ -40,4 +40,26 @@ router.get("/get_products", function (req, res) {
   });
 });
 
+router.post("/get_pr_trend", function (req, res) {
+  const { comp, id } = req.body;
+  let sql = `
+  SELECT 
+    price, dt, availablity
+  FROM
+    maaz.prod_prices
+  WHERE
+    comp = '${comp}' AND id = ${id}
+  ORDER BY dt DESC
+  LIMIT 90;
+  `;
+  db.query(sql, function (err, data, fields) {
+    if (err) throw err;
+    // console.log(data);
+    res.json({
+      status: 200,
+      data,
+    });
+  });
+});
+
 module.exports = router;
