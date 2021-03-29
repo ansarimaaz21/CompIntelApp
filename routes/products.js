@@ -45,7 +45,7 @@ router.post("/get_pr_trend", function (req, res) {
   const { comp, id } = req.body;
   let sql = `
   SELECT 
-    price, dt, availablity
+    IFNULL(price,0), IFNULL(dt,''), IFNULL(availablity,0)
   FROM
     maaz.prod_prices
   WHERE
