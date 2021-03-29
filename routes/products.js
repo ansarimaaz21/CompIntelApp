@@ -50,7 +50,7 @@ router.post("/get_pr_trend", function (req, res) {
     maaz.prod_prices
   WHERE
     comp = '${comp}' AND id = ${id}
-  ORDER BY dt DESC
+  ORDER BY dt
   LIMIT 90;
   `;
   db.query(sql, function (err, data, fields) {
